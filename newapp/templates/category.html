@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category: {{ cat.category }}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <h1>Category: {{ cat.category }}</h1>
+    <div class="product-list">
+        {% for product in post %}
+            <div class="product-item">
+                <a href="/view/{{ product.id }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <h3> {{ product.name }} </h3>
+                    <p>{{ product.price }}</p>
+                </a>
+            </div>
+            {% endfor %}
+            {% endblock %}
+   

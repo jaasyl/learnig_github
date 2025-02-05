@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   <section id="header">
+
+     <h4>Thrifty Kerala</h4>
+     
+   <div>
+    <ul id="navbar">
+   
+    <li><a href=""><i class="fa-solid fa-magnifying-glass"></i></li></a>
+    <li><a href="register/"><i class="fa-regular fa-user"></i></li></a>
+    <li> <a href="cart/"><i class="fa-solid fa-cart-plus"></i></a></li>
+
+    </ul>
+    
+   
+  
+   </div>
+   </section>
+   <section id="categories">
+    <div class="category-container">
+        <a href="">Home</a>
+        <a href="">Shop all</a>
+        
+        {% for category in cat %}
+        <div class="category-item {% if category.id == active_category_id %}active{% endif %}">
+            <a href="/category/{{ category.id }}">{{ category.category }}</a>
+        </div>
+        {% endfor %}
+        
+        <a href="">Contact</a>
+    </div>
+</section>
+      {% block content %}
+      {% endblock %}
+</body>
+</html>

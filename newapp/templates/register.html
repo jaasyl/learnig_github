@@ -1,0 +1,38 @@
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    {% for i in messages %}
+    <div class="alert alert-danger" role="alert">
+        {{i}}
+      </div>
+    
+    {% endfor %}
+    <div class="main">
+        
+   <form action="/register/" method="POST" class="x">
+        {% csrf_token %}
+        <input type="text" name="uname" placeholder="username">
+        <input type="text" name="fn" placeholder="1 st name">
+        <input type="text" name="ln" placeholder="last name">
+        <input type="email" name="em" placeholder="email addres">
+        <input type="address" name="ad" placeholder="addres">
+        <input type="phone" name="ph" placeholder="phone">
+        <input type="passwod" name="p1" placeholder="password" >
+        <input type="password" name="p2" placeholder="confirm password">
+
+       <button>register</button>
+ <
+    </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

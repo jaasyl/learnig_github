@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+  
+<section id="hero">
+    <h4>Trade-in-offer</h4>
+    <h2>Super value deals</h2>
+    <h1>on all products</h1>
+    <p>save more with coupons & up to 70% offer! </p>
+    <button>shop now</button>
+</section>
+   
+<section id="product1" class="section-p1">
+    <h2>featured product</h2>
+    <p>vintage collections</p>
+    <div class="pro-container">
+      {% for i in pro %}
+      <div class="pro">
+       <a href="/view/{{i.id}}"><img src="{{i.image.url}}" alt=""></a>
+        <div class="des">
+          <span>{{i.brand}}</span>
+          <h5>{{i.name}}</h5>
+          <h4>{{i.price}}</h4>
+        </div>
+        <form action="{% url 'add-to-cart' i.id %}" method="post">
+            {% csrf_token %}
+            <input type="number" name="quantity" value="1" min="1">
+            <input type="hidden" name="product_id" value="{{ i.id }}">
+            <button type="submit"><i class="fa-solid fa-cart-plus cart"></i></button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+</section>
+</body>
+</html>
+{% endblock %}
